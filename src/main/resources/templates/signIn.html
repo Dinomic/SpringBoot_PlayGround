@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:form="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In Page</title>
+</head>
+<body>
+<form:form action="validateSignIn" method="GET" modelAttribute="Account">
+    <form:input id = "inputName" type="text" path="name" placeholder="Name">
+    <form:input id = "inputPassword" type="text" name="password" placeholder="Password">
+    <select id="inputRole" name="Role">
+        <option value="Bookie">Bookie</option>
+        <option value="Player">Player</option>
+    </select>
+    <input type="submit">
+</form:form>
+</body>
+</html>
