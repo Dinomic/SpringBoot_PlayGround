@@ -5,10 +5,16 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+
+import javax.persistence.criteria.CriteriaBuilder;
 
 @Configuration
-@EnableWebSecurity // (1)
+//@EnableWebSecurity // (1)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter { // (1)
 
     @Override
@@ -50,5 +56,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter { // (1)
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    @Override
+    @Bean
+    protected UserDetailsService userDetailsService(){
+        UserDetails user = User.builder()
+                .username("abc")
+                .password("abc")
+                .roles("USER")
+                .build();
+
+        return new InMemoryUserDetailsManager(user);
     }
 }

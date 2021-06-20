@@ -5,9 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class logInController {
-    @RequestMapping("/signIn")
+public class homeController {
+
+    @RequestMapping("/")
     public String home(Model model){
-        return "signIn";
+        return "home";
     }
 }
